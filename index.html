@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>OpenSeries Capital</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="OpenSeries Capital: the largest late-stage private companies in one index-based allocation. Transparent rules, quarterly liquidity, a 1.25% management fee.">
+<meta name="description" content="OpenSeries Capital: the OpenSeries Morningstar PitchBook Unicorn 30 Index fund. The 30 largest late-stage private companies in developed markets, equal-weighted, quarterly liquidity, a 1.25% management fee.">
 <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#141922" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-title" content="OpenSeries">
@@ -99,7 +99,8 @@ p{margin:0}
 /* Fund card */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:0 24px 48px -24px rgba(14,17,22,.18);overflow:hidden;min-width:0}
 .card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line-2)}
-.card-head b{font-weight:600}
+.card-head b{font-weight:600;display:block;line-height:1.25;text-wrap:balance}
+.card-head > div:first-child{min-width:0}
 .card-head small{display:block;font-size:13px;color:var(--muted)}
 .ticker{font-family:var(--mono);font-size:13px;padding:4px 10px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line-2)}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line-2)}
@@ -211,7 +212,7 @@ OpenSeries&nbsp;<span>Capital</span>
 
 <div class="card" aria-label="Fund summary">
 <div class="card-head">
-<div><b>OpenSeries [Fund name]</b><small>Tracks the Morningstar PitchBook Unicorn 30 Index</small></div>
+<div><b>OpenSeries Morningstar PitchBook Unicorn 30 Index</b><small>Interval fund · tracks the index of the same name</small></div>
 <div class="ticker">[TICKER]</div>
 </div>
 <div class="stats">
