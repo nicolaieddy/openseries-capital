@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OpenSeries Capital</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="OpenSeries Capital: the largest late-stage private companies in one index-based allocation. Transparent rules, quarterly liquidity, a target fee of 1.25%.">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141922" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-title" content="OpenSeries">
+<meta property="og:title" content="OpenSeries Capital">
+<meta property="og:description" content="Private markets, priced like an index.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: one 1200px column, cards only where an element is a distinct object (fund card, feature tiles, table, CTA band). */
+:root{
+  --ground:#F5F6F8; --surface:#FFFFFF; --surface-2:#F8F9FB; --ink:#0E1116; --muted:#5B6472; --line:#E3E6EB; --line-2:#EEF0F3;
+  --accent:#2F4BEA; --accent-ink:#FFFFFF; --accent-soft:#EEF2FF; --accent-tint:#E3E8FF;
+  --dark:#0E1116; --dark-ink:#FFFFFF; --dark-muted:#A8B0BD; --dark-body:#C9CFD8;
+  --font:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --radius:14px; --radius-lg:18px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ground:#0B0E13; --surface:#141922; --surface-2:#10141B; --ink:#EDEFF3; --muted:#9AA3B2; --line:#242B36; --line-2:#1C222C;
+  --accent:#6B82FF; --accent-ink:#0B0E13; --accent-soft:#1A2240; --accent-tint:#0B0E13;
+  --dark:#F2F4F8; --dark-ink:#0E1116; --dark-muted:#4B5563; --dark-body:#2B3340; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#0B0E13; --surface:#141922; --surface-2:#10141B; --ink:#EDEFF3; --muted:#9AA3B2; --line:#242B36; --line-2:#1C222C;
+  --accent:#6B82FF; --accent-ink:#0B0E13; --accent-soft:#1A2240; --accent-tint:#0B0E13;
+  --dark:#F2F4F8; --dark-ink:#0E1116; --dark-muted:#4B5563; --dark-body:#2B3340; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
+a,button,input{-webkit-tap-highlight-color:transparent}
+input,button{font-size:16px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-0.03em;font-weight:600}
+p{margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:13px;color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:10px;font-weight:500;font-size:15px;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:transform .15s ease,background .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{filter:brightness(1.06)}
+.btn-dark{background:var(--dark);color:var(--dark-ink)}
+.btn-ghost{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* Header */
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px 28px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-0.01em;white-space:nowrap}
+.brand span{font-weight:400;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:14px;color:var(--muted);margin-left:auto;min-width:0}
+.nav-links a{padding:6px 0;white-space:nowrap}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta.btn{min-height:40px;padding:0 16px;font-size:14px;color:var(--dark-ink)}
+@media (max-width:720px){
+  .nav{display:grid;grid-template-columns:1fr auto;gap:8px 12px;padding-block:12px 0}
+  .brand{grid-row:1;grid-column:1}
+  .nav-cta.btn{grid-row:1;grid-column:2;justify-self:end}
+  .nav-links{grid-row:2;grid-column:1 / -1;margin-left:0;gap:20px;overflow-x:auto;scrollbar-width:none;padding-block:4px 10px;font-size:15px}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{padding:8px 0}
+}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:56px;align-items:center;padding-block:88px 72px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.hero h1{margin-top:24px;font-size:clamp(44px,6vw,80px);line-height:1;letter-spacing:-0.04em}
+.hero .lede{margin-top:24px;max-width:500px;font-size:18px;color:var(--muted)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+@media (max-width:720px){
+  .hero{gap:36px;padding-block:44px 40px}
+  .hero h1{margin-top:20px;font-size:clamp(40px,11.5vw,64px)}
+  .hero .lede{margin-top:18px;font-size:17px}
+  .hero .actions{margin-top:26px}
+  .hero .actions .btn{flex:1 1 150px}
+  .section{padding-block:72px 24px}
+  .grid{margin-top:32px}
+  .tile{padding:22px}
+  .aud h3{font-size:23px}
+  .strip{gap:10px 22px;padding-block:20px;font-size:13px}
+  .cta{padding-block:72px}
+  th,td{padding:14px 18px}
+}
+
+/* Fund card */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:0 24px 48px -24px rgba(14,17,22,.18);overflow:hidden;min-width:0}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line-2)}
+.card-head b{font-weight:600}
+.card-head small{display:block;font-size:13px;color:var(--muted)}
+.ticker{font-family:var(--mono);font-size:13px;padding:4px 10px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line-2)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line-2)}
+.stats > div{padding:18px 22px;min-width:0}
+.stats > div+div{border-left:1px solid var(--line-2)}
+.stats .k{font-size:12px;color:var(--muted)}
+.stats .v{font-family:var(--mono);font-size:22px;margin-top:4px;font-variant-numeric:tabular-nums}
+.holdings{padding:18px 22px;display:grid;gap:12px}
+.holdings .k{font-size:12px;color:var(--muted)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 120px 56px;gap:12px;align-items:center;font-size:14px}
+.bar{height:6px;border-radius:3px;background:var(--line-2);overflow:hidden}
+.bar i{display:block;height:6px;border-radius:3px;background:var(--accent)}
+.row .w{font-family:var(--mono);text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.card-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:14px 22px;background:var(--surface-2);border-top:1px solid var(--line-2);font-size:13px}
+.card-foot span:first-child{color:var(--muted)}
+
+/* Platforms strip */
+.strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 40px;padding-block:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px;color:var(--muted)}
+.strip b{font-weight:600;color:var(--ink)}
+
+/* Sections */
+.section{padding-block:112px 40px}
+.section h2{font-size:clamp(34px,4vw,44px);line-height:1.05;max-width:680px}
+.section .sub{margin-top:14px;max-width:560px;color:var(--muted);font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:48px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;min-width:0}
+.tile .icon{width:36px;height:36px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.tile h3{margin-top:18px;font-size:18px;letter-spacing:-0.01em}
+.tile p{margin-top:8px;color:var(--muted);font-size:15px}
+
+/* Audience */
+.aud{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.aud > div{border-radius:var(--radius-lg);padding:36px;background:var(--surface);border:1px solid var(--line);min-width:0}
+.aud > div.lead{background:var(--dark);color:var(--dark-ink);border-color:transparent}
+.aud .k{font-size:13px;color:var(--muted)}
+.aud .lead .k{color:var(--dark-muted)}
+.aud h3{margin-top:12px;font-size:26px;letter-spacing:-0.02em}
+.aud p{margin-top:12px;color:var(--muted)}
+.aud .lead p{color:var(--dark-body)}
+
+/* Compare */
+.table-wrap{margin-top:36px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow-x:auto}
+table{width:100%;min-width:640px;border-collapse:collapse;font-size:15px}
+th,td{padding:16px 24px;text-align:left;border-bottom:1px solid var(--line-2);vertical-align:top}
+thead th{font-size:13px;font-weight:500;color:var(--muted);padding-block:18px}
+thead th.us{font-weight:600;color:var(--ink)}
+tbody th{font-weight:500;color:var(--muted)}
+tbody td.us{font-weight:600}
+tbody td{color:var(--muted)}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+.fn{margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* CTA */
+.cta{padding-block:112px}
+.cta-band{background:var(--accent);color:var(--accent-ink);border-radius:20px;padding:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px;align-items:end}
+.cta-band h2{font-size:clamp(32px,4vw,40px);line-height:1.05}
+.cta-band p{margin-top:12px;opacity:.85}
+.form{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+.field{flex:1 1 240px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-size:13px;opacity:.85}
+.field input{height:48px;padding:0 14px;border-radius:10px;border:1px solid transparent;font:inherit;background:var(--surface);color:var(--ink);width:100%}
+.form .btn{min-width:120px}
+.note{margin-top:14px;font-size:14px;min-height:1.5em}
+@media (max-width:640px){.cta-band{padding:32px 24px}.aud > div{padding:28px}}
+@media (max-width:480px){.row{grid-template-columns:minmax(0,1fr) 88px 52px}.card-head,.holdings,.card-foot{padding-left:18px;padding-right:18px}.form .btn{flex:1 1 100%}.stats{grid-template-columns:1fr}.stats > div{display:flex;justify-content:space-between;align-items:baseline;padding:12px 18px}.stats > div+div{border-left:0;border-top:1px solid var(--line-2)}.stats .v{margin-top:0;font-size:18px}}
+
+/* Footer */
+.footer{background:var(--surface);border-top:1px solid var(--line)}
+.footer .wrap{padding-block:40px 64px;display:grid;gap:20px}
+.docs{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px;font-weight:500}
+.docs a:hover{color:var(--accent)}
+.legal{font-size:12px;line-height:1.6;color:var(--muted);max-width:900px}
+.copy{font-size:12px;color:var(--muted)}
+
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="wrap">
+<nav class="nav" aria-label="Primary">
+<a href="#top" class="brand">
+<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="12" width="4" height="9" rx="1" fill="var(--accent)"/><rect x="9" y="6" width="4" height="15" rx="1" fill="var(--accent)"/><rect x="17" y="1" width="4" height="20" rx="1" fill="var(--accent)"/></svg>
+OpenSeries&nbsp;<span>Capital</span>
+</a>
+<div class="nav-links">
+<a href="#product">Product</a>
+<a href="#who">Who it's for</a>
+<a href="#compare">Compare</a>
+<a href="#documents">Documents</a>
+</div>
+<a href="#contact" class="btn btn-dark nav-cta">Get access</a>
+</nav>
+</div>
+</header>
+
+<main id="top">
+
+<section class="wrap hero" aria-labelledby="h1">
+<div>
+<div class="pill"><i></i>Launching [2027] · Interval fund</div>
+<h1 id="h1">Private markets, priced like an index.</h1>
+<p class="lede">The largest late-stage private companies in one allocation. Transparent rules, quarterly liquidity, and a target fee of [1.25%].</p>
+<div class="actions">
+<a href="#contact" class="btn btn-primary">Get the overview</a>
+<a href="#product" class="btn btn-ghost">See how it works</a>
+</div>
+</div>
+
+<div class="card" aria-label="Fund summary">
+<div class="card-head">
+<div><b>OpenSeries [Fund name]</b><small>Tracks [Index name]</small></div>
+<div class="ticker">[TICKER]</div>
+</div>
+<div class="stats">
+<div><div class="k">NAV</div><div class="v">[$00.00]</div></div>
+<div><div class="k">Mgmt fee</div><div class="v">[1.25%]</div></div>
+<div><div class="k">Holdings</div><div class="v">[20]</div></div>
+</div>
+<div class="holdings">
+<div class="k">Top holdings</div>
+<div class="row"><span>[Constituent 01]</span><div class="bar"><i style="width:92%"></i></div><span class="w">[x.x%]</span></div>
+<div class="row"><span>[Constituent 02]</span><div class="bar"><i style="width:74%"></i></div><span class="w">[x.x%]</span></div>
+<div class="row"><span>[Constituent 03]</span><div class="bar"><i style="width:58%"></i></div><span class="w">[x.x%]</span></div>
+<div class="row"><span>[Constituent 04]</span><div class="bar"><i style="width:44%"></i></div><span class="w">[x.x%]</span></div>
+<div class="row"><span>[Constituent 05]</span><div class="bar"><i style="width:33%"></i></div><span class="w">[x.x%]</span></div>
+</div>
+<div class="card-foot"><span>Next repurchase offer</span><span class="mono">[Date] · 5% to 25% of shares</span></div>
+</div>
+</section>
+
+<section class="wrap" aria-label="Available through">
+<div class="strip">
+<span>Available through</span><b>[Platform]</b><b>[Platform]</b><b>[Platform]</b><b>[Custodian]</b>
+</div>
+</section>
+
+<section id="product" class="wrap section">
+<h2>Everything an allocation needs. Nothing it doesn't.</h2>
+<p class="sub">OpenSeries opens the late-stage rounds that used to be reserved for insiders, in a fund built the way index funds are built.</p>
+<div class="grid">
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Index-tracked</h3><p>Holdings follow a published index of the largest late-stage private companies.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Low fee</h3><p>Target management fee of [1.25%], with no performance fee.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Quarterly liquidity</h3><p>Repurchase offers each quarter at NAV, 5% to 25% of shares.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Transparent holdings</h3><p>Constituents and weights published [monthly].</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Clean sourcing</h3><p>Shares bought from existing holders and vetted vehicles, delivery verified before settlement.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Platform-ready</h3><p>Built to sit on the platforms and custodians advisors already use.</p></div>
+</div>
+</section>
+
+<section id="who" class="wrap section">
+<div class="aud">
+<div class="lead"><div class="k">Advisors and RIAs</div><h3>One line in a model portfolio.</h3><p>Subscribe on the platforms you already use. Standard tax reporting [confirm form].</p></div>
+<div><div class="k">Platforms</div><h3>A low-fee shelf product.</h3><p>Index-based, transparent holdings, and a fee that fits beside platform charges.</p></div>
+<div><div class="k">Institutions</div><h3>Seed and anchor terms.</h3><p>Dedicated share classes and reporting for anchor investors.</p></div>
+</div>
+</section>
+
+<section id="compare" class="wrap section">
+<h2>How it compares</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th scope="col"></th><th scope="col" class="us">OpenSeries</th><th scope="col">Active private-company funds</th><th scope="col">Direct secondaries</th></tr></thead>
+<tbody>
+<tr><th scope="row">Management fee</th><td class="us">[1.25%] target</td><td>1.50% to 2.90%</td><td>Spread plus fees</td></tr>
+<tr><th scope="row">Selection</th><td class="us">Rules-based index</td><td>Manager discretion</td><td>One deal at a time</td></tr>
+<tr><th scope="row">Diversification</th><td class="us">[20] companies</td><td>Manager-selected</td><td>Single company</td></tr>
+<tr><th scope="row">Liquidity</th><td class="us">Quarterly at NAV</td><td>Quarterly, varies</td><td>Until exit</td></tr>
+</tbody>
+</table>
+</div>
+<p class="fn">Ranges from public filings, October 2026. [Verify and footnote before publishing.]</p>
+</section>
+
+<section id="contact" class="wrap cta">
+<div class="cta-band">
+<div>
+<h2>Get the overview before launch.</h2>
+<p>For financial professionals and institutions.</p>
+</div>
+<div>
+<form class="form" id="overview-form" novalidate>
+<div class="field">
+<label for="email">Work email</label>
+<input id="email" name="email" type="email" autocomplete="email" placeholder="name@firm.com" required>
+</div>
+<button type="submit" class="btn btn-dark">Request</button>
+</form>
+<p class="note" id="form-note" aria-live="polite"></p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer id="documents" class="footer">
+<div class="wrap">
+<div class="docs">
+<a href="#documents">Prospectus</a><a href="#documents">Fact sheet</a><a href="#documents">Index methodology</a><a href="#documents">Holdings</a><a href="#documents">Repurchase calendar</a>
+</div>
+<p class="legal">Investors should consider the fund's investment objectives, risks, charges and expenses carefully before investing; this and other information is in the prospectus. An interval fund offers to repurchase a limited portion of its shares periodically, and investors may not be able to sell all the shares they wish to sell. Private-company investments are illiquid and their valuations are uncertain. [Counsel to finalize all disclosures and index licensing language before publication.]</p>
+<div class="copy">© [Year] OpenSeries Capital [legal entity]</div>
+</div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('overview-form');
+  var note=document.getElementById('form-note');
+  var email=document.getElementById('email');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!email.value||!email.validity.valid){note.textContent='Enter a work email address.';email.focus();return;}
+    /* [Wire to the chosen form endpoint before launch.] */
+    note.textContent='Thanks. We will send the overview to '+email.value+'.';
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
