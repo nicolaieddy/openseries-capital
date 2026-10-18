@@ -1,6 +1,6 @@
 # OpenSeries Capital
 
-Landing page for OpenSeries Capital: an index-based interval fund for the largest late-stage private companies.
+Landing page for OpenSeries Capital: the OpenSeries Morningstar PitchBook Global Unicorn Index Fund, an index-based interval fund for venture-backed companies valued at $1 billion or more.
 
 One static page, no build step and no dependencies: `index.html`, `favicon.svg`, `apple-touch-icon.png`, `vercel.json`.
 
