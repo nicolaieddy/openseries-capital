@@ -6,8 +6,7 @@
 <title>OpenSeries Capital</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="OpenSeries Capital: the OpenSeries Morningstar PitchBook Unicorn 30 Index Fund. The 30 largest late-stage private companies in developed markets, equal-weighted, quarterly liquidity, a 1.25% management fee.">
-<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#141922" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="apple-mobile-web-app-title" content="OpenSeries">
 <meta property="og:title" content="OpenSeries Capital">
 <meta property="og:description" content="Private markets, priced like an index.">
@@ -26,6 +25,7 @@
   --font:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --radius:14px; --radius-lg:18px;
 }
+/* Dark mode: disabled for launch (Nicolai, 2026-10-18). To re-enable, remove this comment wrapper and restore the dark theme-color meta.
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --ground:#0B0E13; --surface:#141922; --surface-2:#10141B; --ink:#EDEFF3; --muted:#9AA3B2; --line:#242B36; --line-2:#1C222C;
   --accent:#6B82FF; --accent-ink:#0B0E13; --accent-soft:#1A2240; --accent-tint:#0B0E13;
@@ -34,6 +34,8 @@
   --ground:#0B0E13; --surface:#141922; --surface-2:#10141B; --ink:#EDEFF3; --muted:#9AA3B2; --line:#242B36; --line-2:#1C222C;
   --accent:#6B82FF; --accent-ink:#0B0E13; --accent-soft:#1A2240; --accent-tint:#0B0E13;
   --dark:#F2F4F8; --dark-ink:#0E1116; --dark-muted:#4B5563; --dark-body:#2B3340; color-scheme:dark}
+*/
+:root{color-scheme:light}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
