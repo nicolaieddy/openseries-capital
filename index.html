@@ -5,59 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>OpenSeries Capital</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="OpenSeries Capital: the OpenSeries Morningstar PitchBook Global Unicorn Index Fund. The world's venture-backed companies valued at $1 billion or more, in one allocation. Transparent rules, quarterly liquidity, a 1.25% management fee.">
+<meta name="description" content="OpenSeries Capital is building the index fund for the private market: a US interval fund designed to track the Morningstar PitchBook Global Unicorn Index, with quarterly liquidity and a 1.25% management fee. Launching 2027.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="apple-mobile-web-app-title" content="OpenSeries">
 <meta property="og:title" content="OpenSeries Capital">
-<meta property="og:description" content="Private markets, priced like an index.">
+<meta property="og:description" content="The index fund for the private market.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://openseries.capital/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout: one 1200px column, cards only where an element is a distinct object (fund card, feature tiles, table, CTA band). */
+/* Layout: one 1200px column; cards only where an element is a distinct object (fund card, tiles, table, contact band). */
 :root{
   --ground:#F5F6F8; --surface:#FFFFFF; --surface-2:#F8F9FB; --ink:#0E1116; --muted:#5B6472; --line:#E3E6EB; --line-2:#EEF0F3;
-  --accent:#2F4BEA; --accent-ink:#FFFFFF; --accent-soft:#EEF2FF; --accent-tint:#E3E8FF;
+  --accent:#2F4BEA; --accent-ink:#FFFFFF; --accent-soft:#EEF2FF;
   --dark:#0E1116; --dark-ink:#FFFFFF; --dark-muted:#A8B0BD; --dark-body:#C9CFD8;
   --font:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif; --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --radius:14px; --radius-lg:18px;
+  color-scheme:light;
 }
-/* Dark mode: disabled for launch (Nicolai, 2026-10-18). To re-enable, remove this comment wrapper and restore the dark theme-color meta.
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --ground:#0B0E13; --surface:#141922; --surface-2:#10141B; --ink:#EDEFF3; --muted:#9AA3B2; --line:#242B36; --line-2:#1C222C;
-  --accent:#6B82FF; --accent-ink:#0B0E13; --accent-soft:#1A2240; --accent-tint:#0B0E13;
-  --dark:#F2F4F8; --dark-ink:#0E1116; --dark-muted:#4B5563; --dark-body:#2B3340; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --ground:#0B0E13; --surface:#141922; --surface-2:#10141B; --ink:#EDEFF3; --muted:#9AA3B2; --line:#242B36; --line-2:#1C222C;
-  --accent:#6B82FF; --accent-ink:#0B0E13; --accent-soft:#1A2240; --accent-tint:#0B0E13;
-  --dark:#F2F4F8; --dark-ink:#0E1116; --dark-muted:#4B5563; --dark-body:#2B3340; color-scheme:dark}
-*/
-:root{color-scheme:light}
+/* Dark mode is off for launch (Nicolai, 2026-10-18). Dark tokens are kept in git history (commit d691346) to restore later. */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
-a,button,input{-webkit-tap-highlight-color:transparent}
-input,button{font-size:16px}
+a,button,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
+input,button,select,textarea{font-size:16px}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-0.03em;font-weight:600}
 p{margin:0}
+[id]{scroll-margin-top:96px}
 .wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.eyebrow{font-size:13px;color:var(--muted)}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:13px;font-weight:500;color:var(--accent);letter-spacing:0.02em}
 .link{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
 .link:hover{color:var(--accent);text-decoration-color:var(--accent)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:10px;font-weight:500;font-size:15px;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:transform .15s ease,background .15s ease}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:10px;font-weight:500;font-size:15px;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:transform .15s ease,filter .15s ease}
 .btn:active{transform:translateY(1px)}
 .btn-primary{background:var(--accent);color:var(--accent-ink)}
 .btn-primary:hover{filter:brightness(1.06)}
 .btn-dark{background:var(--dark);color:var(--dark-ink)}
 .btn-ghost{background:var(--surface);border-color:var(--line);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--muted)}
+.btn[disabled]{opacity:.6;cursor:progress}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* Header */
@@ -68,8 +61,8 @@ p{margin:0}
 .nav-links{display:flex;align-items:center;gap:24px;font-size:14px;color:var(--muted);margin-left:auto;min-width:0}
 .nav-links a{padding:6px 0;white-space:nowrap}
 .nav-links a:hover{color:var(--ink)}
-.nav-cta.btn{min-height:40px;padding:0 16px;font-size:14px;color:var(--dark-ink)}
-@media (max-width:720px){
+.nav-cta.btn{min-height:40px;padding:0 16px;font-size:14px}
+@media (max-width:820px){
   .nav{display:grid;grid-template-columns:1fr auto;gap:8px 12px;padding-block:12px 0}
   .brand{grid-row:1;grid-column:1}
   .nav-cta.btn{grid-row:1;grid-column:2;justify-self:end}
@@ -83,69 +76,66 @@ p{margin:0}
 .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:13px;color:var(--muted)}
 .pill i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
 .hero h1{margin-top:24px;font-size:clamp(44px,6vw,80px);line-height:1;letter-spacing:-0.04em}
-.hero .lede{margin-top:24px;max-width:500px;font-size:18px;color:var(--muted)}
-.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.assure{display:flex;align-items:flex-start;gap:10px;margin-top:18px;max-width:500px;font-size:15px;color:var(--ink)}
+.lede{margin-top:24px;max-width:520px;font-size:18px;color:var(--muted)}
+.assure{display:flex;align-items:flex-start;gap:10px;margin-top:18px;max-width:520px;font-size:15px}
 .assure svg{flex:none;margin-top:2px;color:var(--accent)}
-@media (max-width:720px){
-  .hero{gap:36px;padding-block:44px 40px}
-  .hero h1{margin-top:20px;font-size:clamp(40px,11.5vw,64px)}
-  .hero .lede{margin-top:18px;font-size:17px}
-  .hero .actions{margin-top:26px}
-  .hero .actions .btn{flex:1 1 150px}
-  .section{padding-block:72px 24px}
-  .grid{margin-top:32px}
-  .tile{padding:22px}
-  .aud h3{font-size:23px}
-  .strip{gap:10px 22px;padding-block:20px;font-size:13px}
-  .cta{padding-block:72px}
-  th,td{padding:14px 18px}
-}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 
 /* Fund card */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:0 24px 48px -24px rgba(14,17,22,.18);overflow:hidden;min-width:0}
-.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line-2)}
-.card-head b{font-weight:600;display:block;line-height:1.25;text-wrap:balance}
-.card-head > div:first-child{min-width:0}
-.card-head small{display:block;font-size:13px;color:var(--muted)}
-.ticker{font-family:var(--mono);font-size:13px;padding:4px 10px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line-2)}
+.card-head{padding:20px 22px;border-bottom:1px solid var(--line-2)}
+.card-head b{display:block;font-weight:600;line-height:1.25;text-wrap:balance}
+.card-head small{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line-2)}
 .stats > div{padding:18px 22px;min-width:0}
 .stats > div+div{border-left:1px solid var(--line-2)}
-.stats .k{font-size:12px;color:var(--muted)}
-.stats .v{font-family:var(--mono);font-size:22px;margin-top:4px;font-variant-numeric:tabular-nums}
-.holdings{padding:18px 22px;display:grid;gap:12px}
-.holdings .k{font-size:12px;color:var(--muted)}
-.row{display:grid;grid-template-columns:minmax(0,1fr) 120px 56px;gap:12px;align-items:center;font-size:14px}
-.bar{height:6px;border-radius:3px;background:var(--line-2);overflow:hidden}
-.bar i{display:block;height:6px;border-radius:3px;background:var(--accent)}
-.row .w{font-family:var(--mono);text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.k{font-size:12px;color:var(--muted)}
+.v{font-family:var(--mono);font-size:22px;margin-top:4px;font-variant-numeric:tabular-nums}
+.names{padding:18px 22px;display:grid;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:6px 10px;border-radius:8px;background:var(--surface-2);border:1px solid var(--line-2);font-size:14px}
 .card-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:14px 22px;background:var(--surface-2);border-top:1px solid var(--line-2);font-size:13px}
 .card-foot span:first-child{color:var(--muted)}
 
-/* Platforms strip */
-.strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 40px;padding-block:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px;color:var(--muted)}
-.strip b{font-weight:600;color:var(--ink)}
-
 /* Sections */
 .section{padding-block:112px 40px}
-.section h2{font-size:clamp(34px,4vw,44px);line-height:1.05;max-width:680px}
-.section .sub{margin-top:14px;max-width:560px;color:var(--muted);font-size:17px}
+.section h2{margin-top:10px;font-size:clamp(32px,4vw,44px);line-height:1.05;max-width:720px}
+.sub{margin-top:14px;max-width:600px;color:var(--muted);font-size:17px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:48px}
 .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;min-width:0}
 .tile .icon{width:36px;height:36px;border-radius:9px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)}
 .tile h3{margin-top:18px;font-size:18px;letter-spacing:-0.01em}
 .tile p{margin-top:8px;color:var(--muted);font-size:15px}
 
+/* Why now */
+.figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:48px;border-top:1px solid var(--ink)}
+.figures > div{padding:28px 24px 8px 0;min-width:0}
+.figures .big{font-family:var(--mono);font-size:clamp(36px,4.4vw,52px);letter-spacing:-0.03em;line-height:1;font-variant-numeric:tabular-nums}
+.figures p{margin-top:12px;color:var(--muted);font-size:15px;max-width:300px}
+.src{margin-top:28px;font-size:12px;color:var(--muted);max-width:900px}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:48px;counter-reset:step}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;min-width:0}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-family:var(--mono);font-size:14px}
+.step h3{margin-top:18px;font-size:18px;letter-spacing:-0.01em}
+.step p{margin-top:8px;color:var(--muted);font-size:15px}
+
 /* Audience */
-.aud{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.aud{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:48px}
 .aud > div{border-radius:var(--radius-lg);padding:36px;background:var(--surface);border:1px solid var(--line);min-width:0}
 .aud > div.lead{background:var(--dark);color:var(--dark-ink);border-color:transparent}
-.aud .k{font-size:13px;color:var(--muted)}
 .aud .lead .k{color:var(--dark-muted)}
 .aud h3{margin-top:12px;font-size:26px;letter-spacing:-0.02em}
 .aud p{margin-top:12px;color:var(--muted)}
 .aud .lead p{color:var(--dark-body)}
+
+/* Index rules */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 48px;margin-top:40px;border-top:1px solid var(--line)}
+.rules > div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.rules dt{font-weight:600;font-size:15px}
+.rules dd{margin:0;color:var(--muted);font-size:15px}
+.index-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 
 /* Compare */
 .table-wrap{margin-top:36px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);overflow-x:auto}
@@ -157,30 +147,68 @@ tbody th{font-weight:500;color:var(--muted)}
 tbody td.us{font-weight:600}
 tbody td{color:var(--muted)}
 tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
-.fn{margin-top:14px;font-size:13px;color:var(--muted)}
 
-/* CTA */
+/* FAQ */
+.faq{margin-top:40px;border-top:1px solid var(--line);max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-weight:600;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-weight:400;font-size:22px;color:var(--muted);flex:none}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{padding:0 0 20px;color:var(--muted);max-width:720px}
+
+/* Contact */
 .cta{padding-block:112px}
-.cta-band{background:var(--accent);color:var(--accent-ink);border-radius:20px;padding:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px;align-items:end}
+.cta-band{background:var(--accent);color:var(--accent-ink);border-radius:20px;padding:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start}
 .cta-band h2{font-size:clamp(32px,4vw,40px);line-height:1.05}
-.cta-band p{margin-top:12px;opacity:.85}
-.form{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
-.field{flex:1 1 240px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.field label{font-size:13px;opacity:.85}
-.field input{height:48px;padding:0 14px;border-radius:10px;border:1px solid transparent;font:inherit;background:var(--surface);color:var(--ink);width:100%}
-.form .btn{min-width:120px}
-.note{margin-top:14px;font-size:14px;min-height:1.5em}
-@media (max-width:640px){.cta-band{padding:32px 24px}.aud > div{padding:28px}}
-@media (max-width:480px){.row{grid-template-columns:minmax(0,1fr) 88px 52px}.card-head,.holdings,.card-foot{padding-left:18px;padding-right:18px}.form .btn{flex:1 1 100%}.stats{grid-template-columns:1fr}.stats > div{display:flex;justify-content:space-between;align-items:baseline;padding:12px 18px}.stats > div+div{border-left:0;border-top:1px solid var(--line-2)}.stats .v{margin-top:0;font-size:18px}}
+.cta-band .intro{margin-top:14px;color:#E3E8FF;max-width:420px}
+.doors{display:grid;gap:10px;margin-top:28px;max-width:420px}
+.doors a{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);font-size:15px}
+.doors a:hover{background:rgba(255,255,255,.16)}
+.form{display:grid;gap:14px;min-width:0}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-size:13px;color:#E3E8FF}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid transparent;font:inherit;background:var(--surface);color:var(--ink)}
+.field input,.field select{height:48px;padding-block:0}
+.field textarea{min-height:96px;resize:vertical}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.form .btn{justify-self:start;min-width:160px}
+.note{font-size:14px;min-height:1.5em}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
 /* Footer */
 .footer{background:var(--surface);border-top:1px solid var(--line)}
-.footer .wrap{padding-block:40px 64px;display:grid;gap:20px}
+.footer .wrap{padding-block:40px 64px;display:grid;gap:18px}
+.footer .brand{font-size:15px}
 .docs{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px;font-weight:500}
 .docs a:hover{color:var(--accent)}
 .legal{font-size:12px;line-height:1.6;color:var(--muted);max-width:900px}
-.copy{font-size:12px;color:var(--muted)}
 
+@media (max-width:720px){
+  .hero{gap:36px;padding-block:44px 40px}
+  .hero h1{margin-top:20px;font-size:clamp(40px,11.5vw,64px)}
+  .lede{margin-top:18px;font-size:17px}
+  .actions{margin-top:26px}
+  .actions .btn{flex:1 1 auto;white-space:nowrap}
+  .section{padding-block:72px 24px}
+  .grid,.steps,.aud,.figures{margin-top:32px}
+  .tile,.step{padding:22px}
+  .aud > div{padding:28px}
+  .aud h3{font-size:23px}
+  .cta{padding-block:72px}
+  .cta-band{padding:32px 22px}
+  th,td{padding:14px 18px}
+  .rules > div{grid-template-columns:100px minmax(0,1fr)}
+}
+@media (max-width:480px){
+  .stats{grid-template-columns:1fr}
+  .stats > div{display:flex;justify-content:space-between;align-items:baseline;padding:12px 18px}
+  .stats > div+div{border-left:0;border-top:1px solid var(--line-2)}
+  .v{margin-top:0;font-size:18px}
+  .card-head,.names,.card-foot{padding-left:18px;padding-right:18px}
+  .form .btn{justify-self:stretch}
+  .rules > div{grid-template-columns:1fr;gap:4px}
+}
 </style>
 </head>
 <body>
@@ -188,17 +216,15 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
 <header class="header">
 <div class="wrap">
 <nav class="nav" aria-label="Primary">
-<a href="#top" class="brand">
-<i class="mark" aria-hidden="true"></i>
-OpenSeries Capital
-</a>
+<a href="#top" class="brand"><i class="mark" aria-hidden="true"></i>OpenSeries Capital</a>
 <div class="nav-links">
-<a href="#product">Product</a>
-<a href="#who">Who it's for</a>
-<a href="#compare">Compare</a>
-<a href="#documents">Documents</a>
+<a href="#why">Why now</a>
+<a href="#product">The fund</a>
+<a href="#how">How it works</a>
+<a href="#index">The index</a>
+<a href="#faq">FAQ</a>
 </div>
-<a href="#contact" class="btn btn-dark nav-cta">Get access</a>
+<a href="#contact" class="btn btn-dark nav-cta">Get in touch</a>
 </nav>
 </div>
 </header>
@@ -207,125 +233,211 @@ OpenSeries Capital
 
 <section class="wrap hero" aria-labelledby="h1">
 <div>
-<div class="pill"><i></i>Launching [2027] · Interval fund</div>
-<h1 id="h1">Private markets, priced like an index.</h1>
-<p class="lede">The world's venture-backed companies valued at $1 billion or more, in one allocation. Transparent rules, quarterly liquidity, and a 1.25% management fee.</p>
+<div class="pill"><i></i>Launching 2027 · US interval fund</div>
+<h1 id="h1">The index fund for the private market.</h1>
+<p class="lede">One allocation to the world's largest venture-backed companies, designed to track the Morningstar PitchBook Global Unicorn Index. Quarterly liquidity and a 1.25% management fee.</p>
 <p class="assure"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.8l5.6 2.2v4.3c0 3.6-2.4 6.4-5.6 7.9-3.2-1.5-5.6-4.3-5.6-7.9V4z"/><path d="M6.4 9.1l1.8 1.8 3.4-3.6"/></svg><span>Every share is bought from existing holders or vetted vehicles and verified before settlement.</span></p>
 <div class="actions">
-<a href="#contact" class="btn btn-primary">Get the overview</a>
+<a href="#contact" class="btn btn-primary">Get the fund overview</a>
 <a href="#product" class="btn btn-ghost">See how it works</a>
 </div>
 </div>
 
 <div class="card" aria-label="Fund summary">
 <div class="card-head">
-<div><b>OpenSeries Morningstar PitchBook Global Unicorn Index Fund</b><small>Interval fund · tracks the <a class="link" href="https://indexes.morningstar.com/indexes/details/morningstar-pitchbook-global-unicorn-FS0000HS64?currency=USD&variant=TR&tab=overview" target="_blank" rel="noopener">Morningstar PitchBook Global Unicorn Index</a></small></div>
-<div class="ticker">[TICKER]</div>
+<b>OpenSeries Morningstar PitchBook Global Unicorn Index Fund</b>
+<small>US interval fund · designed to track the <a class="link" href="https://indexes.morningstar.com/indexes/details/morningstar-pitchbook-global-unicorn-FS0000HS64?currency=USD&amp;variant=TR&amp;tab=overview" target="_blank" rel="noopener">Morningstar PitchBook Global Unicorn Index</a></small>
 </div>
 <div class="stats">
-<div><div class="k">NAV</div><div class="v">[$00.00]</div></div>
-<div><div class="k">Mgmt fee</div><div class="v">1.25%</div></div>
-<div><div class="k">Index constituents</div><div class="v">1,300+</div></div>
+<div><div class="k">Management fee</div><div class="v">1.25%</div></div>
+<div><div class="k">Index companies</div><div class="v">1,300+</div></div>
+<div><div class="k">Liquidity</div><div class="v">Quarterly</div></div>
 </div>
-<div class="holdings">
-<div class="k">Largest constituents · illustrative · 10% cap per company</div>
-<div class="row"><span>SpaceX</span><div class="bar"><i style="width:100%"></i></div><span class="w">10.0%</span></div>
-<div class="row"><span>OpenAI</span><div class="bar"><i style="width:100%"></i></div><span class="w">10.0%</span></div>
-<div class="row"><span>Anthropic</span><div class="bar"><i style="width:84%"></i></div><span class="w">8.4%</span></div>
-<div class="row"><span>ByteDance</span><div class="bar"><i style="width:79%"></i></div><span class="w">7.9%</span></div>
-<div class="row"><span>Databricks</span><div class="bar"><i style="width:23%"></i></div><span class="w">2.3%</span></div>
-<div class="k">Weighted by latest valuation. Full constituent list on the index page.</div>
+<div class="names">
+<div class="k">Among the largest private companies today</div>
+<div class="chips"><span>SpaceX</span><span>OpenAI</span><span>Anthropic</span><span>Databricks</span><span>Stripe</span></div>
+<div class="k">Index weights follow each company's latest valuation, capped at 10%.</div>
 </div>
-<div class="card-foot"><span>Next repurchase offer</span><span class="mono">[Date] · 5% to 25% of shares</span></div>
+<div class="card-foot"><span>Status</span><span>In development · launch targeted for 2027</span></div>
 </div>
 </section>
 
-<section class="wrap" aria-label="Available through">
-<div class="strip">
-<span>Available through</span><b>[Platform]</b><b>[Platform]</b><b>[Platform]</b><b>[Custodian]</b>
+<section id="why" class="wrap section" aria-labelledby="why-h">
+<div class="eyebrow">Why now</div>
+<h2 id="why-h">The most valuable companies of this decade are still private.</h2>
+<p class="sub">Companies now stay private for a decade or more. Investors who own only public markets miss a growing share of the economy, and the ways in today are expensive and hand-picked.</p>
+<div class="figures">
+<div><div class="big">$8.6T</div><p>Combined value of the 1,680 private companies worth $1 billion or more.</p></div>
+<div><div class="big">10.7 yrs</div><p>Median age of venture-backed companies today, up from 6.9 years a decade ago.</p></div>
+<div><div class="big">$257B</div><p>Already invested in US interval and tender-offer funds, the wrapper this fund uses.</p></div>
+<div><div class="big">2025</div><p>A US executive order directed regulators to open 401(k) plans to private assets.</p></div>
 </div>
+<p class="src">Sources: PitchBook Global Unicorn Tracker, Q1 2026; PitchBook Data, November 2024; XA Investments interval fund tracker, Q2 2026; Executive Order 14330, August 2025.</p>
 </section>
 
-<section id="product" class="wrap section">
-<h2>Everything an allocation needs. Nothing it doesn't.</h2>
-<p class="sub">OpenSeries opens the late-stage rounds that used to be reserved for insiders, in a fund built the way index funds are built.</p>
+<section id="product" class="wrap section" aria-labelledby="product-h">
+<div class="eyebrow">The fund</div>
+<h2 id="product-h">Everything an allocation needs. Nothing it doesn't.</h2>
+<p class="sub">An index fund opens the late-stage rounds that used to be reserved for insiders, at a fraction of what active managers charge.</p>
 <div class="grid">
-<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Index-tracked</h3><p>Follows the <a class="link" href="https://indexes.morningstar.com/indexes/details/morningstar-pitchbook-global-unicorn-FS0000HS64?currency=USD&variant=TR&tab=overview" target="_blank" rel="noopener">Morningstar PitchBook Global Unicorn Index</a>: every privately held, venture-backed company valued at $1 billion or more, worldwide. <a class="link" href="https://indexes.morningstar.com/docs/rulebook/morningstar-pitchbook-global-unicorn-FS0000HS64" target="_blank" rel="noopener">Read the index rules</a>.</p></div>
-<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Clean sourcing</h3><p>You know the shares are there. Each one is bought from existing holders or vetted vehicles, with delivery verified before settlement.</p></div>
-<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Low fee</h3><p>Management fee of 1.25%, with no performance fee.</p></div>
-<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Quarterly liquidity</h3><p>Repurchase offers each quarter at NAV, 5% to 25% of shares.</p></div>
-<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Weighted by valuation, capped</h3><p>Constituents are weighted by their latest valuation, with no company above 10%. Reconstituted twice a year, rebalanced quarterly, priced daily.</p></div>
-<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Platform-ready</h3><p>Built to sit on the platforms and custodians advisors already use. Tokenized share classes are on the roadmap, where regulation allows.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Index-tracked</h3><p>Designed to track the Morningstar PitchBook Global Unicorn Index through a focused sample of its largest companies. Rules, not stock picks.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Clean sourcing</h3><p>You know the shares are there. Each one is bought from existing holders or vetted vehicles, with delivery verified before settlement. No layered SPVs.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Low fee</h3><p>A 1.25% management fee and no performance fee, against 1.9% to 2.9% for active private-company funds.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Quarterly liquidity</h3><p>The fund offers to buy back between 5% and 25% of its shares each quarter at net asset value.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Diversified, capped</h3><p>Weighted by valuation with no company above 10%, so one name cannot dominate the portfolio.</p></div>
+<div class="tile"><div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5l3.5 3.5L15 4.5"/></svg></div><h3>Platform-ready</h3><p>Built for the wealth platforms and custodians advisors already use. Tokenized share classes are on the roadmap, where regulation allows.</p></div>
 </div>
 </section>
 
-<section id="who" class="wrap section">
+<section id="how" class="wrap section" aria-labelledby="how-h">
+<div class="eyebrow">How it works</div>
+<h2 id="how-h">Three steps, like any fund ticket.</h2>
+<div class="steps">
+<div class="step"><span class="n">1</span><h3>Investors buy in</h3><p>Through their adviser or wealth platform, the same way they buy a mutual fund.</p></div>
+<div class="step"><span class="n">2</span><h3>The fund buys the index</h3><p>Shares bought directly from holders or from tightly vetted vehicles, in line with index weights.</p></div>
+<div class="step"><span class="n">3</span><h3>Daily value, quarterly exits</h3><p>Net asset value under the fund's valuation policy, and an offer each quarter to buy back shares.</p></div>
+</div>
+</section>
+
+<section id="who" class="wrap section" aria-labelledby="who-h">
+<div class="eyebrow">Who it's for</div>
+<h2 id="who-h">Built for the people who allocate.</h2>
 <div class="aud">
-<div class="lead"><div class="k">Advisors and RIAs</div><h3>One line in a model portfolio.</h3><p>Sized for a 2% to 4% alternatives sleeve. Subscribe on the platforms you already use, with standard tax reporting [confirm form].</p></div>
-<div><div class="k">Platforms</div><h3>A low-fee shelf product.</h3><p>Index-based, transparent holdings, and a fee that fits beside platform charges.</p></div>
-<div><div class="k">Institutions</div><h3>Seed and anchor terms.</h3><p>Dedicated share classes and reporting for anchor investors.</p></div>
+<div class="lead"><div class="k">Advisors and RIAs</div><h3>One line in a model portfolio.</h3><p>Sized for a 2% to 4% alternatives sleeve. Subscribe on the platforms you already use.</p></div>
+<div><div class="k">Wealth platforms</div><h3>A low-fee shelf product.</h3><p>Index-based, with transparent rules and a fee that fits beside platform charges.</p></div>
+<div><div class="k">Institutions and family offices</div><h3>Seed and anchor terms.</h3><p>Early allocators can discuss anchor commitments and dedicated share classes.</p></div>
 </div>
 </section>
 
-<section id="compare" class="wrap section">
-<h2>How it compares</h2>
+<section id="index" class="wrap section" aria-labelledby="index-h">
+<div class="eyebrow">The index</div>
+<h2 id="index-h">A published benchmark, with rules anyone can read.</h2>
+<p class="sub">The Morningstar PitchBook Global Unicorn Index covers privately held, venture-backed companies worldwide, using PitchBook's data and Morningstar's daily valuation method.</p>
+<dl class="rules">
+<div><dt>Universe</dt><dd>Every privately held, venture-backed company with a latest valuation of $1 billion or more.</dd></div>
+<div><dt>Weighting</dt><dd>By latest post-money valuation, capped at 10% per company.</dd></div>
+<div><dt>Pricing</dt><dd>Daily values from a model that combines recent deals with private and public comparables.</dd></div>
+<div><dt>Maintenance</dt><dd>Membership reset each June and December; weights rebalanced quarterly.</dd></div>
+<div><dt>IPOs</dt><dd>Newly listed companies stay in the index for 180 days, then leave.</dd></div>
+<div><dt>History</dt><dd>Live since October 2022, with values back to December 2014.</dd></div>
+</dl>
+<div class="index-links">
+<a class="btn btn-ghost" href="https://indexes.morningstar.com/indexes/details/morningstar-pitchbook-global-unicorn-FS0000HS64?currency=USD&amp;variant=TR&amp;tab=overview" target="_blank" rel="noopener">Index page</a>
+<a class="btn btn-ghost" href="https://indexes.morningstar.com/docs/overview/morningstar-pitchbook-global-unicorn-FS0000HS64" target="_blank" rel="noopener">Factsheet</a>
+<a class="btn btn-ghost" href="https://indexes.morningstar.com/docs/rulebook/morningstar-pitchbook-global-unicorn-FS0000HS64" target="_blank" rel="noopener">Methodology</a>
+</div>
+</section>
+
+<section id="compare" class="wrap section" aria-labelledby="compare-h">
+<div class="eyebrow">Compare</div>
+<h2 id="compare-h">The index option, at roughly half the price.</h2>
 <div class="table-wrap">
 <table>
 <thead><tr><th scope="col"></th><th scope="col" class="us">OpenSeries</th><th scope="col">Active private-company funds</th><th scope="col">Direct secondaries</th></tr></thead>
 <tbody>
-<tr><th scope="row">Management fee</th><td class="us">1.25%</td><td>1.50% to 2.90%</td><td>Spread plus fees</td></tr>
+<tr><th scope="row">Management fee</th><td class="us">1.25%</td><td>1.9% to 2.9%</td><td>Spreads and deal fees</td></tr>
 <tr><th scope="row">Selection</th><td class="us">Rules-based index</td><td>Manager discretion</td><td>One deal at a time</td></tr>
-<tr><th scope="row">Diversification</th><td class="us">1,300+ companies, 10% cap</td><td>Manager-selected</td><td>Single company</td></tr>
+<tr><th scope="row">Diversification</th><td class="us">Broad index, 10% cap</td><td>Manager-selected</td><td>Single company</td></tr>
 <tr><th scope="row">Liquidity</th><td class="us">Quarterly at NAV</td><td>Quarterly, varies</td><td>Until exit</td></tr>
 </tbody>
 </table>
 </div>
-<p class="fn">Ranges from public filings, October 2026. [Verify and footnote before publishing.]</p>
+<p class="src">Headline management fees or expense limits from public materials of US private-company funds, October 2026.</p>
 </section>
 
-<section id="contact" class="wrap cta">
+<section id="faq" class="wrap section" aria-labelledby="faq-h">
+<div class="eyebrow">FAQ</div>
+<h2 id="faq-h">Questions we hear most.</h2>
+<div class="faq">
+<details><summary>Can I invest today?</summary><p>Not yet. The fund is in development and has not been registered with the SEC. Launch is targeted for 2027. Leave your details below and we will send the overview and keep you posted.</p></details>
+<details><summary>How can a fund value private companies every day?</summary><p>The fund strikes its net asset value under a written valuation policy, checked against the index's daily marks and observed trades. The index itself uses Morningstar's published daily valuation method.</p></details>
+<details><summary>How do I get my money out?</summary><p>Each quarter the fund offers to buy back between 5% and 25% of its shares at net asset value. If more investors ask to sell than the offer covers, requests are filled pro rata, so you may not be able to sell everything at once.</p></details>
+<details><summary>Does the fund hold every company in the index?</summary><p>No. It holds a focused sample of the largest names, chosen to track the index while keeping trading costs down.</p></details>
+<details><summary>How do you avoid fake or layered SPV exposure?</summary><p>Shares are bought directly from existing holders or from tightly vetted vehicles, and delivery is verified before settlement.</p></details>
+<details><summary>What will it cost?</summary><p>A 1.25% management fee, with no performance fee. Platforms may add their own charges, and the fund's operating expenses will be set out in the prospectus.</p></details>
+</div>
+</section>
+
+<section id="contact" class="wrap cta" aria-labelledby="contact-h">
+<span id="invest" aria-hidden="true"></span>
 <div class="cta-band">
 <div>
-<h2>Get the overview before launch.</h2>
-<p>For financial professionals and institutions.</p>
+<h2 id="contact-h">Get in touch before launch.</h2>
+<p class="intro">Tell us who you are and we will follow up personally.</p>
+<div class="doors">
+<a href="#contact" data-role="allocator">Allocating for clients or an institution<span aria-hidden="true">→</span></a>
+<a href="#invest" data-role="backer">Interested in backing OpenSeries Capital<span aria-hidden="true">→</span></a>
 </div>
-<div>
-<form class="form" id="overview-form" novalidate>
-<div class="field">
-<label for="email">Work email</label>
-<input id="email" name="email" type="email" autocomplete="email" placeholder="name@firm.com" required>
 </div>
-<button type="submit" class="btn btn-dark">Request</button>
-</form>
+<form class="form" id="contact-form" novalidate>
+<div class="two">
+<div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+<div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="name@firm.com" required></div>
+</div>
+<div class="two">
+<div class="field"><label for="firm">Firm</label><input id="firm" name="firm" type="text" autocomplete="organization"></div>
+<div class="field"><label for="role">I am</label>
+<select id="role" name="role">
+<option value="Financial advisor or RIA">A financial advisor or RIA</option>
+<option value="Wealth platform">With a wealth platform</option>
+<option value="Institution or family office">An institution or family office</option>
+<option value="Interested in backing OpenSeries Capital">Interested in backing OpenSeries Capital</option>
+<option value="Other">Other</option>
+</select></div>
+</div>
+<div class="field"><label for="message">Anything we should know? (optional)</label><textarea id="message" name="message"></textarea></div>
+<div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+<button type="submit" class="btn btn-dark" id="submit">Send</button>
 <p class="note" id="form-note" aria-live="polite"></p>
-</div>
+</form>
 </div>
 </section>
 
 </main>
 
-<footer id="documents" class="footer">
+<footer class="footer">
 <div class="wrap">
+<a href="#top" class="brand"><i class="mark" aria-hidden="true"></i>OpenSeries Capital</a>
 <div class="docs">
-<a href="#documents">Prospectus</a><a href="#documents">Fact sheet</a><a href="https://indexes.morningstar.com/docs/overview/morningstar-pitchbook-global-unicorn-FS0000HS64" target="_blank" rel="noopener">Index factsheet</a><a href="https://indexes.morningstar.com/docs/rulebook/morningstar-pitchbook-global-unicorn-FS0000HS64" target="_blank" rel="noopener">Index methodology</a><a href="#documents">Holdings</a><a href="#documents">Repurchase calendar</a>
+<a href="https://indexes.morningstar.com/docs/overview/morningstar-pitchbook-global-unicorn-FS0000HS64" target="_blank" rel="noopener">Index factsheet</a>
+<a href="https://indexes.morningstar.com/docs/rulebook/morningstar-pitchbook-global-unicorn-FS0000HS64" target="_blank" rel="noopener">Index methodology</a>
+<a href="#contact">Contact</a>
 </div>
-<p class="legal">Investors should consider the fund's investment objectives, risks, charges and expenses carefully before investing; this and other information is in the prospectus. An interval fund offers to repurchase a limited portion of its shares periodically, and investors may not be able to sell all the shares they wish to sell. Private-company investments are illiquid and their valuations are uncertain. [Counsel to finalize all disclosures before publication.]</p>
-<p class="legal">The Morningstar PitchBook Global Unicorn Index is a product of Morningstar, Inc. The fund is not sponsored, endorsed or sold by Morningstar. [Attribution wording per the index licence.]</p>
-<div class="copy">© 2026 OpenSeries Capital [legal entity]</div>
+<p class="legal">OpenSeries Capital is in formation. The fund described on this site is in development, has not been registered with the US Securities and Exchange Commission and is not available for investment. Nothing on this site is an offer to sell, or a solicitation of an offer to buy, any security; any such offer will be made only by prospectus. Investing in private companies involves risk, including loss of principal. Private-company shares are illiquid and their valuations are uncertain. An interval fund offers to repurchase a limited portion of its shares periodically, and investors may not be able to sell all the shares they wish to sell.</p>
+<p class="legal">Morningstar® and PitchBook® are registered trademarks of their respective owners. The Morningstar PitchBook Global Unicorn Index is a product of Morningstar, Inc. Use of the index and its name by the fund is subject to licence. The fund is not sponsored, endorsed, sold or promoted by Morningstar or PitchBook. Market figures are from the third-party sources noted and have not been independently verified.</p>
+<p class="legal">© 2026 OpenSeries Capital</p>
 </div>
 </footer>
 
 <script>
 (function(){
-  var form=document.getElementById('overview-form');
+  var ENDPOINT='https://formsubmit.co/ajax/sanjay.arya4466@gmail.com';
+  var form=document.getElementById('contact-form');
   var note=document.getElementById('form-note');
-  var email=document.getElementById('email');
+  var btn=document.getElementById('submit');
+  var role=document.getElementById('role');
+  function setRole(r){ role.value = r==='backer' ? 'Interested in backing OpenSeries Capital' : 'Financial advisor or RIA'; }
+  document.querySelectorAll('.doors a').forEach(function(a){ a.addEventListener('click',function(){ setRole(a.getAttribute('data-role')); setTimeout(function(){document.getElementById('name').focus({preventScroll:true});},350); }); });
+  if(location.hash==='#invest'){ setRole('backer'); }
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    if(!email.value||!email.validity.valid){note.textContent='Enter a work email address.';email.focus();return;}
-    /* [Wire to the chosen form endpoint before launch.] */
-    note.textContent='Thanks. We will send the overview to '+email.value+'.';
-    form.reset();
+    var nameEl=document.getElementById('name'), name=nameEl.value.trim(), email=document.getElementById('email');
+    if(!name){ note.textContent='Please add your name.'; nameEl.focus(); return; }
+    if(!email.value||!email.validity.valid){ note.textContent='Please enter a valid work email.'; email.focus(); return; }
+    if(document.getElementById('website').value){ return; }
+    btn.disabled=true; note.textContent='Sending…';
+    var data={
+      name:name, email:email.value.trim(), firm:document.getElementById('firm').value.trim(), role:role.value, message:document.getElementById('message').value.trim(),
+      _subject:'OpenSeries Capital enquiry: '+role.value+', '+name, _template:'table', _captcha:'false'
+    };
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); })
+      .then(function(res){
+        if(res.ok && String(res.j.success)==='true'){ note.textContent='Thank you. We will be in touch shortly.'; form.reset(); }
+        else { throw new Error('send failed'); }
+      })
+      .catch(function(){ note.textContent='Sorry, that did not go through. Please try again in a moment.'; })
+      .then(function(){ btn.disabled=false; });
   });
 })();
 </script>
